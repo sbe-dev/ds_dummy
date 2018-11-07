@@ -39,10 +39,82 @@ head(trees)
 plot(mtcars$wt, mtcars$mpg, xlab="Weight", ylab="MPG")
 ```
 
-
 ## Slide with Plot
 
 ```{r pressure, echo=FALSE, fig.align='left'}
 plot(pressure)
 ```
 
+## Leaflet map \#1
+```{r, echo=FALSE,fig.align='center', fig.cap="Leaflet map"}
+library(leaflet)
+my_map <- leaflet() %>%
+  addTiles()
+my_map
+```
+
+## Leaflet map \#2
+```{r, echo=FALSE,fig.align='center'}
+library(leaflet)
+my_map <- my_map %>%
+  addMarkers(lat=4.676973,lng=-74.042319, 
+             popup="Bogota, Bogota D.C.")
+my_map
+```
+
+## Leaflet map \#3
+```{r, eval=TRUE}
+library(leaflet)
+set.seed(2018-11-06)
+df <- data.frame(lat = runif(20, min = 4.6, max = 4.7),
+                 lng = runif(20, min = -74.1, max = -74.0))
+
+jdIcon <- makeIcon(
+  iconUrl = "https://raw.githubusercontent.com/sbe-dev/ds_dummy/gh-pages/johnd0e.jpg",
+  iconWidth = 31*215/230, iconHeight = 31,
+  iconAnchorX = 31*215/230/2, iconAnchorY = 16
+)
+
+jdSites <- c("<a href='http://www.sbe-dev.de' target='_blank'>sbe</a>")
+
+df %>%
+  leaflet() %>%
+  addTiles() %>%
+  addMarkers() %>%
+  addMarkers(lat=4.676973,lng=-74.042319, 
+             popup=jdSites,
+             icon = jdIcon, 
+             )
+```
+
+## Leaflet with Clusters 
+```{r, eval=TRUE}
+library(leaflet)
+set.seed(2018-11-06)
+df <- data.frame(lat = runif(500, min = 4.6, max = 4.7),
+                 lng = runif(500, min = -74.1, max = -74.0))
+
+df %>%
+  leaflet() %>%
+  addTiles() %>%
+  addMarkers(clusterOptions = markerClusterOptions())
+```
+
+
+## Leaflet map with colors and circles
+```{r, eval=TRUE}
+library(leaflet)
+set.seed(2018-11-06)
+df <- data.frame(lat = runif(100, min = 4.6, max = 4.7),
+                 lng = runif(100, min = -74.1, max = -74.0),
+                 col = sample(c("red","blue","green", "grey"),20, replace=TRUE),
+                 pop = sample(c(2,4,6,8,10,40,70,160,200,750)),
+                 stringsAsFactors = FALSE)
+
+df %>%
+  leaflet() %>%
+  addTiles() %>%
+  addCircleMarkers(color = df$col, clusterOptions = markerClusterOptions()) %>%
+  addLegend(labels = LETTERS[1:4], colors = c("red","blue","green", "grey"))
+
+```
