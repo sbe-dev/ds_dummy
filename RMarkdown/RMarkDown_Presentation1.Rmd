@@ -1,0 +1,48 @@
+---
+title: "RMarkDown-Presentation 1"
+author: "sbe"
+date: "07/11/2018"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## R Markdown
+
+Intro
+
+## Slide with Bullets
+
+- Bullet 1
+- Bullet 2
+- Bullet 3
+
+* item a
+* item b
+
+
+## Slide 1
+```{r head(mtcars), echo = TRUE,comment="",collapse=TRUE,out.height=25}
+head(mtcars)
+```
+
+## Slide 2 
+### Code not evaluated
+```{r head(trees), echo = TRUE,comment="", eval=FALSE, fig.cap="Trees",collapse=TRUE,out.height=80}
+head(trees)
+```
+
+## MPG
+```{r echo=TRUE, fig.align='center', fig.cap="Miles per gallon", fig.pos=1}
+plot(mtcars$wt, mtcars$mpg, xlab="Weight", ylab="MPG")
+```
+
+
+## Slide with Plot
+
+```{r pressure, echo=FALSE, fig.align='left'}
+plot(pressure)
+```
+
