@@ -11,7 +11,7 @@ knitr::opts_chunk$set(echo = FALSE)
 
 ## Leaflet map \#3
 
-** created on 07-NOV-2018 ***
+***created on 07-NOV-2018***
 ```{r, eval=TRUE}
 library(leaflet)
 set.seed(2018-11-06)
