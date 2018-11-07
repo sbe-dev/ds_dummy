@@ -1,0 +1,37 @@
+---
+title: "Week2 Assignment"
+author: "sbe"
+date: "07/11/2018"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Leaflet map \#3
+
+** created on 07-NOV-2018 ***
+```{r, eval=TRUE}
+library(leaflet)
+set.seed(2018-11-06)
+df <- data.frame(lat = runif(2000, min = 4.55, max = 4.8),
+                 lng = runif(2000, min = -74.1, max = -73.9))
+
+jdIcon <- makeIcon(
+  iconUrl = "https://raw.githubusercontent.com/sbe-dev/ds_dummy/gh-pages/johnd0e.jpg",
+  iconWidth = 31*215/230, iconHeight = 31,
+  iconAnchorX = 31*215/230/2, iconAnchorY = 16
+)
+
+jdSites <- c("Thanks for reviewing the assignment")
+
+df %>%
+  leaflet() %>%
+  addTiles() %>%
+  addMarkers(clusterOptions = markerClusterOptions()) %>%
+  addMarkers(lat=4.676973,lng=-74.042319, 
+             popup=jdSites,
+             icon = jdIcon
+             ) 
+```
