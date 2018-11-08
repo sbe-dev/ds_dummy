@@ -1,0 +1,39 @@
+---
+title: "Week 3 Assignment - Plotly"
+author: "sbe"
+date: "08/11/2018"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Week 3 Assignment 
+**created on 08 NOV 2018 by sbe**
+```{r echo=FALSE, fig.align='center', message=FALSE}
+library(plotly)
+data("mtcars")
+plot_ly(mtcars,x=mtcars$mpg, y=mtcars$hp,type='scatter',mode="markers", color=order(mtcars$cyl))
+```
+
+## Week 3 Assignment (1)
+**created on 08 NOV 2018 by sbe**
+```{r, echo = FALSE, message = FALSE, fig.align="center"}
+library(plotly)
+data("airmiles")
+terrain <- matrix(sort(rnorm(100*100)), nrow = 200, ncol = 100)
+plot_ly(z= terrain, type="surface", name="matrix")
+```
+
+## Week 3 Assignment (2)
+**created on 08 NOV 2018 by sbe**
+```{r, echo = FALSE, message = FALSE}
+library(plotly)
+set.seed(2016-07-21)
+temp <- rnorm(100, mean = 30, sd = 5)
+pressure <- rnorm(100)
+dtime <- 1:100
+plot_ly(x = temp, y = pressure, z = dtime,
+      type="scatter3d",mode="markers", color=order(temp))
+```
