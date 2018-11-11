@@ -1,0 +1,49 @@
+---
+title: "Week 4 Presentation"
+author: "sbe"
+date: "10/11/2018"
+output: slidy_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Contents
+
+**RandomColorApp - (RaCa) **
+
+***Contents***
+
+- Contents (page 2)
+- Elevator Pitch (page 3)
+- Code Example 1 (page 4)
+- Code Example 2 (page 5)
+
+(The title page is counted as page 1)
+
+## Elevator Pitch
+
+The **RandomColorApp** (RaCa) is a pure entertainment app.
+It allows users to experience some to the fantastic R features in a playful and easy way.
+
+## Code Example 1
+
+***Here are some projections how pressure rises***
+
+```{r pressure, echo=TRUE}
+plot(pressure)
+```
+
+## Code Example 2
+```{r, echo = FALSE, message = FALSE}
+library(plotly)
+set.seed(2016-07-21)
+temp <- rnorm(100, mean = 30, sd = 5)
+pressure <- rnorm(100)
+dtime <- 1:100
+plot_ly(x = temp, y = pressure, z = dtime,
+      type="scatter3d",mode="markers", color=order(temp))
+```
+
+
